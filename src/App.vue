@@ -1,36 +1,72 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      clipped
+    >
+      <v-list dense>
+        <router-link to="">
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>dashboard</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Dashboard</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+        <router-link to="">
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>dashboard</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Dashboard</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+      </v-list>
+      <template v-slot:append>
+          <div class="pa-2">
+            <v-btn block>Logout</v-btn>
+          </div>
+        </template>
+    </v-navigation-drawer>
+
+    <v-app-bar
+      app
+      clipped-left
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>ROOM ADMIN</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <v-container
+        class="fill-height"
+        fluid
+      >
+        
+      </v-container>
     </v-content>
+
+    <v-footer app>
+      <span>&copy; ROOM ADMIN 2019</span>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-  },
-  data: () => ({
-    //
-  }),
-};
+  export default {
+    props: {
+      source: String,
+    },
+    data: () => ({
+      drawer: null,
+    }),
+    created () {
+      this.$vuetify.theme.dark = true
+    },
+  }
 </script>
