@@ -31,19 +31,21 @@
             <v-card-text>
               <v-container>
                 <v-row>
-                  <v-col cols="12" sm="12" md="12">
-                    <v-text-field v-model="editedItem.name" label="Nama Bangunan"></v-text-field>
+                  <v-col class="d-flex" cols="12" sm="12">
+                    <v-select
+                      :items="items"
+                      label="Building"
+                      v-model="editedItem.building_id"
+                    ></v-select>
                   </v-col>
                   <v-col cols="12" sm="12" md="12">
-                    <v-textarea
-                        v-model="editItem.file"
-                        :row-height="24"
-                        :rows="1"
-                        label="Alamat Bangunan"
-                    ></v-textarea>
+                    <v-text-field v-model="editedItem.nama" label="Nama Ruangan"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="12" md="12">
-                    <v-file-input display-size counter multiple label="Input Obj 3D"></v-file-input>
+                    <v-text-field v-model="editedItem.macble" label="Mac Bluetooth Device"></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="12" md="12">
+                    <v-file-input v-model="editedItem.file" display-size counter multiple label="Input Obj 3D"></v-file-input>
                   </v-col>
                 </v-row>
               </v-container>
@@ -90,27 +92,29 @@ export default {
       dialog :false,
       headers: [
         {
-          text: 'Nama Bangunan',
+          text: 'Nama Ruangan',
           align: 'left',
           sortable: true,
           value: 'nama',
         },
-        { text: 'alamat', value: 'alamat' },
-        { text: 'QR Code', value: 'qrCode' },
+        { text: 'Mac Bluethoot', value: 'macble' },
         { text: 'Actions', value: 'action', sortable: false },
       ],
       desserts: [],
       editedIndex: -1,
       editedItem: {
         nama: '',
-        alamat: '',
-        file: '',
+        macble: '',
+        file: null,
+        building_id:null
       },
       defaultItem: {
         nama: '',
-        alamat: '',
-        file: '',
+        macble: '',
+        file: null,
+        building_id:null
       },
+      items: ['Foo', 'Bar', 1, 'Buzz'],
     }),
 
     computed: {
@@ -134,12 +138,13 @@ export default {
         this.desserts = [
           {
             nama: 'Dilo',
-            alamat: 159,
+            macble: 159,
+            building_id:1
           },
           {
             nama: 'Telkom',
-            alamat: 237,
-            
+            macble: 237,
+            building_id:1
           },
         ]
       },

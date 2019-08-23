@@ -1,5 +1,5 @@
 <template>
-<h1>halaman dashboard</h1>
+<h1>Selamat Datang admin</h1>
 </template>
 
 <script>
