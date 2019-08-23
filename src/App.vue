@@ -19,10 +19,20 @@
         <router-link to="">
           <v-list-item>
             <v-list-item-action>
-              <v-icon>dashboard</v-icon>
+              <v-icon>home_work</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>Dashboard</v-list-item-title>
+              <v-list-item-title>Building</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+        <router-link to="">
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>room</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Room</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </router-link>
@@ -54,6 +64,8 @@
     <v-footer app>
       <span>&copy; ROOM ADMIN 2019</span>
     </v-footer>
+
+    
   </v-app>
 </template>
 
