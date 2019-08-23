@@ -87,7 +87,7 @@ export default {
       actions: true,
       outlined: true,
       elevation: 50,
-      dialog :null,
+      dialog :false,
       headers: [
         {
           text: 'Nama Bangunan',
