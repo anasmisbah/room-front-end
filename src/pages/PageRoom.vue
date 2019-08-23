@@ -1,5 +1,5 @@
 <template>
-  <h1>Room</h1>
+  <h1>Halaman Room</h1>
 </template>
 
 <script>
