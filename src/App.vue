@@ -43,7 +43,7 @@
         class="ml-0 pl-4"
       >
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <span class="hidden-sm-and-down">Room Admin</span>
+        <span class="hidden-sm-and-down">Room<v-icon large dark>business</v-icon></span>
       </v-toolbar-title>
       <div class="flex-grow-1"></div>
       <v-btn
