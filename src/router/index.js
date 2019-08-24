@@ -8,6 +8,7 @@ import PageRoom from '@/pages/PageRoom.vue'
 import PageUser from '@/pages/PageUser.vue'
 import PageLogin from '@/pages/PageLogin.vue'
 import PageRegister from '@/pages/PageRegister.vue'
+import PageOtp from '../pages/PageOtp.vue'
 
 Vue.use(VueRouter)
 
@@ -44,6 +45,12 @@ const router = new VueRouter({
             path : '/register',
             name : 'register',
             component : PageRegister
+        }
+        ,
+        {
+            path : '/OTP',
+            name : 'otp',
+            component : PageOtp
         }
     ],
     mode : 'history'

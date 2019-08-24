@@ -11,7 +11,7 @@ export default {
             return axios.get()
             .then(res =>{
                 const buildings = res.data
-                commit('setItem',{resource: 'building', item: buildings},{root: true})
+                commit('setItem',{resource: 'buildings', item: buildings},{root: true})
                 return state.items
             })
         },
@@ -25,6 +25,12 @@ export default {
                 })
         },
         createBuilding(){
+            
+        },
+        editBuilding(){
+
+        },
+        deleteBuilding(){
             
         }
     }

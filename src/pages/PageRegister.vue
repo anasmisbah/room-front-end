@@ -42,7 +42,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="info">Login With OTP</v-btn>
+                <v-btn :to="{name:'otp'}" color="info">Login With OTP</v-btn>
                 <v-btn :to="{name:'login'}" color="warning">Login</v-btn>
                 <div class="flex-grow-1"></div>
                 <v-btn color="primary">Register</v-btn>
