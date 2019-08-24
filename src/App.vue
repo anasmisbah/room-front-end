@@ -27,7 +27,7 @@
       </v-list>
       <template v-slot:append>
           <div class="pa-2">
-            <v-btn block color="warning">Logout</v-btn>
+            <v-btn :to="{name:'login'}" block color="warning">Logout</v-btn>
           </div>
         </template>
     </v-navigation-drawer>

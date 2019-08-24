@@ -5,11 +5,18 @@
                 dark
                 flat
               >
-                <v-toolbar-title>Login Room</v-toolbar-title>
+                <v-toolbar-title>Register Room</v-toolbar-title>
                 <div class="flex-grow-1"></div>
               </v-toolbar>
               <v-card-text>
                 <v-form>
+                  <v-text-field
+                    label="Nama"
+                    name="nama"
+                    prepend-icon="person"
+                    type="text"
+                  ></v-text-field>
+
                   <v-text-field
                     label="Email"
                     name="email"
@@ -24,13 +31,21 @@
                     prepend-icon="lock"
                     type="password"
                   ></v-text-field>
+
+                  <v-text-field
+                    id="password confirmation"
+                    label="password confirmation"
+                    name="password_confirmation"
+                    prepend-icon="lock"
+                    type="password"
+                  ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-btn color="info">Login With OTP</v-btn>
-                <v-btn :to="{name:'register'}" color="warning">Register</v-btn>
+                <v-btn :to="{name:'login'}" color="warning">Login</v-btn>
                 <div class="flex-grow-1"></div>
-                <v-btn color="primary">Login</v-btn>
+                <v-btn color="primary">Register</v-btn>
               </v-card-actions>
             </v-card>
 </template>

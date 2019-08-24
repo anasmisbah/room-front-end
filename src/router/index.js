@@ -6,6 +6,8 @@ import Pagedashboard from '@/pages/PageDashboard.vue'
 import PageBuilding from '@/pages/PageBuilding.vue'
 import PageRoom from '@/pages/PageRoom.vue'
 import PageUser from '@/pages/PageUser.vue'
+import PageLogin from '@/pages/PageLogin.vue'
+import PageRegister from '@/pages/PageRegister.vue'
 
 Vue.use(VueRouter)
 
@@ -30,6 +32,18 @@ const router = new VueRouter({
             path : '/user',
             name : 'user',
             component : PageUser
+        }
+        ,
+        {
+            path : '/login',
+            name : 'login',
+            component : PageLogin
+        }
+        ,
+        {
+            path : '/register',
+            name : 'register',
+            component : PageRegister
         }
     ],
     mode : 'history'
