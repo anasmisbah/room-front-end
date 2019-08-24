@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 import Pagedashboard from '@/pages/PageDashboard.vue'
 import PageBuilding from '@/pages/PageBuilding.vue'
 import PageRoom from '@/pages/PageRoom.vue'
-
+import PageUser from '@/pages/PageUser.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +25,11 @@ const router = new VueRouter({
             path : '/room',
             name : 'room',
             component : PageRoom
+        },
+        {
+            path : '/user',
+            name : 'user',
+            component : PageUser
         }
     ],
     mode : 'history'
