@@ -61,19 +61,31 @@
       </v-toolbar>
     </template>
     <template v-slot:item.action="{ item }">
-      <v-icon
-        small
-        class="mr-2"
-        @click="editItem(item)"
-      >
-        edit
-      </v-icon>
-      <v-icon
-        small
-        @click="deleteItem(item)"
-      >
-        delete
-      </v-icon>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-icon
+            v-on="on"
+            small
+            class="mr-2"
+            @click="editItem(item)"
+          >edit
+          </v-icon>
+        </template>
+        <span>Edit Room</span>
+      </v-tooltip>
+      
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-icon
+          small
+          @click="deleteItem(item)"
+          v-on="on"
+        >
+          delete
+        </v-icon>
+        </template>
+        <span>Delete Room</span>
+      </v-tooltip>
     </template>
     <template v-slot:no-data>
       <v-btn color="primary" @click="initialize">Reset</v-btn>

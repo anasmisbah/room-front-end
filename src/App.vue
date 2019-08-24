@@ -87,7 +87,7 @@
       drawer: null,
       items: [
         { icon: 'dashboard', text: 'Dashboard',url:{name: 'dashboard'} },
-        { icon: 'users', text: 'User' , url:{name: 'user'}},
+        { icon: 'people', text: 'User' , url:{name: 'user'}},
         { icon: 'home_work', text: 'Building',url:{name: 'building'} },
         { icon: 'room', text: 'Room' , url:{name: 'room'}},
       ],
