@@ -11,9 +11,9 @@
     <v-card-text>
     <v-form>
         <v-text-field
-        label="Nomor Hp/telepon"
+        label="4 digits code"
         name="phone"
-        prepend-icon="person"
+        prepend-icon="confirmation_number"
         type="text"
         ></v-text-field>
     </v-form>
@@ -22,6 +22,7 @@
         <div class="flex-grow-1"></div>
         <v-btn color="info">Send Code</v-btn>
     </v-card-actions>
+    <router-view></router-view>
 </v-card>
 </template>
 
