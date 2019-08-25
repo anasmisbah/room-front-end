@@ -55,7 +55,7 @@
           item
         >
           <v-img
-            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
+            src="./assets/logo2.png"
             alt="Vuetify"
           >
           </v-img>

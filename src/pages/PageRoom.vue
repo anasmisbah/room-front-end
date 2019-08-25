@@ -6,7 +6,7 @@
     >
   <v-data-table
     :headers="headers"
-    :items="desserts"
+    :items="rooms"
     class="elevation-1"
     
   >
@@ -95,6 +95,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
     data: () => ({
       media: true,
@@ -107,9 +108,9 @@ export default {
           text: 'Nama Ruangan',
           align: 'left',
           sortable: true,
-          value: 'nama',
+          value: 'name',
         },
-        { text: 'Mac Bluethoot', value: 'macble' },
+        { text: 'Mac Bluethoot', value: 'mac_ble' },
         { text: 'Actions', value: 'action', sortable: false },
       ],
       desserts: [],
@@ -133,6 +134,13 @@ export default {
       formTitle () {
         return this.editedIndex === -1 ? 'New Add Building' : 'Edit Building'
       },
+
+      ...mapState({
+        rooms: state => state.rooms.items
+        
+      })
+      
+      
     },
 
     watch: {
@@ -143,9 +151,12 @@ export default {
 
     created () {
       this.initialize()
+      this.fetchRoom()
     },
 
     methods: {
+
+      ...mapActions('rooms',['fetchRoom','deleteRoom']),
       initialize () {
         this.desserts = [
           {
@@ -168,7 +179,7 @@ export default {
       },
 
       deleteItem (item) {
-        const index = this.desserts.indexOf(item)
+        const index = this.rooms.indexOf(item)
         this.$swal(
             {
                 title: 'Are you sure you want to delete this item??',
@@ -180,7 +191,8 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                 if (result.value) {
-                    this.desserts.splice(index, 1)
+                    this.deleteRoom(this.rooms[index].id)
+                    this.rooms.splice(index, 1)
                     this.$swal(
                     'Deleted!',
                     'Your file has been deleted.',

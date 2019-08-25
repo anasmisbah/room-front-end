@@ -6,7 +6,7 @@
     >
   <v-data-table
     :headers="headers"
-    :items="desserts"
+    :items="buildings"
     class="elevation-1"
     
   >
@@ -56,9 +56,39 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
+        <v-dialog
+            v-model="dialogQr"
+            max-width="400"
+          >
+            <v-card>
+              <qrcode-vue :value="valueqr" :size="sizeqr" level="H"></qrcode-vue>
+              <v-card-actions>
+                <div class="flex-grow-1"></div>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click="dialogQr = false"
+                >
+                  Close
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
       </v-toolbar>
     </template>
     <template v-slot:item.action="{ item }">
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-icon
+          small
+          @click="generateQR(item)"
+          v-on="on"
+        >
+          code
+        </v-icon>
+        </template>
+        <span>Qr Code</span>
+      </v-tooltip>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-icon
@@ -94,22 +124,29 @@
 </template>
 
 <script>
+import QrcodeVue from 'qrcode.vue';
+import { mapActions, mapState } from 'vuex'
 export default {
+  components:{
+    QrcodeVue
+  },
     data: () => ({
+      valueqr:'',
+      sizeqr:0,
       media: true,
       actions: true,
       outlined: true,
       elevation: 50,
       dialog :false,
+      dialogQr:false,
       headers: [
         {
           text: 'Nama Bangunan',
           align: 'left',
           sortable: true,
-          value: 'nama',
+          value: 'name',
         },
-        { text: 'alamat', value: 'alamat' },
-        { text: 'QR Code', value: 'qrCode' },
+        { text: 'alamat', value: 'address' },
         { text: 'Actions', value: 'action', sortable: false },
       ],
       desserts: [],
@@ -130,6 +167,10 @@ export default {
       formTitle () {
         return this.editedIndex === -1 ? 'New Add Building' : 'Edit Building'
       },
+      ...mapState({
+        buildings: state => state.buildings.items
+        
+      })
     },
 
     watch: {
@@ -140,9 +181,11 @@ export default {
 
     created () {
       this.initialize()
+      this.fetchBuilding()
     },
 
     methods: {
+      ...mapActions('buildings',['fetchBuilding','deleteBuilding']),
       initialize () {
         this.desserts = [
           {
@@ -157,6 +200,13 @@ export default {
         ]
       },
 
+      generateQR(item){
+        const index = this.buildings.indexOf(item)
+        this.valueqr = `${this.buildings[index].id}`
+        this.sizeqr = 300
+        this.dialogQr = true
+      },
+
       editItem (item) {
         this.editedIndex = this.desserts.indexOf(item)
         this.editedItem = Object.assign({}, item)
@@ -164,7 +214,7 @@ export default {
       },
 
       deleteItem (item) {
-        const index = this.desserts.indexOf(item)
+        const index = this.buildings.indexOf(item)
         this.$swal(
             {
                 title: 'Are you sure you want to delete this item??',
@@ -176,7 +226,8 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                 if (result.value) {
-                    this.desserts.splice(index, 1)
+                  this.deleteBuilding(this.buildings[index].id)
+                    this.buildings.splice(index, 1)
                     this.$swal(
                     'Deleted!',
                     'Your file has been deleted.',

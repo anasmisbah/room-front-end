@@ -8,16 +8,17 @@ export default {
     },
     actions:{
         fetchBuilding ({state,commit}){
-            return axios.get()
+            commit('setItems',{resource: 'buildings', items: []},{root: true})
+            return axios.get('http://localhost:3000/api/building/1/user')
             .then(res =>{
                 const buildings = res.data
-                commit('setItem',{resource: 'buildings', item: buildings},{root: true})
+                commit('setItems',{resource: 'buildings', items: buildings},{root: true})
                 return state.items
             })
         },
         fetchBuildingById({state,commit},buildingId){
             commit('setItem',{resource:'buildings',item:{}},{root: true})
-                return axios.get()
+                return axios.get('/building/'+buildingId)
                 .then(res =>{
                     const building = res.data
                     commit('setItem',{resource:'buildings',item: building},{root: true})
@@ -30,8 +31,10 @@ export default {
         editBuilding(){
 
         },
-        deleteBuilding(){
-            
+        deleteBuilding({state,commit},buildingId){
+            return axios.delete('http://localhost:3000/api/building/delete/'+buildingId)
+                .then(res =>{
+                })
         }
     }
 }
